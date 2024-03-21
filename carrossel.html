@@ -1,0 +1,210 @@
+<!-- A linha abaixo define o tipo de documento, qual seja, html -->
+<!DOCTYPE html>
+
+<!-- A linha abaixo inicia o bloco de códigos em html, também define o atributo "lang", que é a liguagem do documento, para br (brasil) -->
+<html lang="br">
+
+<!-- A linha abaixo inicia o bloco de códigos que serão carregados no cabeçalho da página, ou seja, serão carregados ANTES dos elementos -->
+<head>
+
+    <!-- A linha abaixo define a variável de ambiente/atributo "charset" (tipo de caracter) para "UTF-8" (padrão universal de caracteres) -->
+    <meta charset="UTF-8">
+
+    <!-- A linha abaixo define a variável de ambiente/atributo "name" ("nome"), da variável/atributo do sistema "viewport", a qual receberá os valores definidos no próximo atributo "content", o qual receberá o conteúdo para uso da variável/atributo "viewport", neste caso declarando a variável de sistema da seguinte forma: viewport="width=device-width, initial-scale=1.0" -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- A linha abaixo define o título da página, que aparecerá no topo da janela do navegador -->
+    <title>Criando Carrossel Bootstrap em React</title>
+
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU90FeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEWIH crossorigin="anonymous"> -->
+    <!-- A linha abaixo carrega localmente os arquivos de configuração de estilobootstrap.min.css, o qual contém estilos da página e dos elementos que a compõem -->
+    <link href="./bootstrap.min.css" rel="stylesheet">
+
+    <!-- A linha abaixo carrega localmente o icone da página que será exibido ao lado do titulo da página no navegador -->
+    <link rel="shortcut icon" href="./favicon.ico">
+
+<!-- A linha abaixo encerra o bloco de códigos do cabeçalho -->
+</head>
+
+<!-- A linha abaixo inicia o bloco de códigos da tag <body> (corpo da página, que é igual ao objeto "document" invocado no javascript) -->
+<body>
+
+    <!-- A linha abaixo é a div necessária pra funcionar corretamente o react-->
+    <div id="mydiv"></div>
+
+    <!-- AS LINHAS ABAIXO SÃO NECESSÁRIAS PARA O CORRETO FUNCIONAMENTO DO REACT -->
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY31HB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIds1K1eN7N6jIeHz" crossorigin="anonymous"></script> -->
+    <!-- A linha abaixo carrega a biblioteca bootstrap bootstrap.bundle.min.js para funcionar corretamente o bootstrap -->
+    <script src="./bootstrap.bundle.min.js"></script>
+
+    <!-- <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script> -->
+    <!-- A linha abaixo carrega a biblioteca de desenvolvimento do react react.development.js para funcionar corretamente o react -->
+    <script src="./react.development.js"></script>
+
+    <!-- <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script> -->
+    <!-- A linha abaixo carrega a biblioteca popper popper.js para uso de elementos como menus, tooltips e popovers no react-->
+    <script src="./popper.js"></script>
+
+    <!-- <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script> -->
+    <!-- A linha abaixo carrega a biblioteca de desenvolvimento react-dom react-dom.development.js para uso de elementos virtuais no react -->
+    <script src="./react-dom.development.js"></script>
+
+    <!-- <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>-->
+    <!-- A linha abaixo carrega a biblioteca babel babel.js para transpilar, via JavaScript, todo código react -->
+    <script src="./babel.min.js"></script>
+
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/react-router-dom/6.22.2/react-router-dom.production.min. js" integrity="sha512-826x5QtMrxGdjQk0W8k1+yVQL3mhQUMQJkBWfCp0IuGqyyYtxA1Sd4VfhdbZIPaEX2MEOSvy7Hb17w7zYRNFJQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+    <!-- A linha abaixo carrega a biblioteca de produção do componente react-router-dom react-router-dom.production. min.js, que serve para criar reoteadores (caminhos) para o react-->
+    <script src="./react-router-dom.production.min.js"></script>
+
+    <!-- <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script> -->
+    <!-- A linha abaixo carrega a biblioteca de produção do componente jquery jquery-3.7.1.min.js, que serve para utilizar o "ajax" que conecta formulário com banco de dados no react -->
+    <script src="./jquery-3.7.1.min.js"></script>
+
+    <!-- A linha abaixo inicia o bloco de códigos react, cujo atributo "type" é definido para "text/babel", que é o transpilador de código react -->
+    <script type="text/babel">
+
+        /**
+         * A partir daqui são declarados todos os códigos em react
+         * Para se criar um elemento é necessário que o mesmo tenha uma referência, ou seja, é necessário que se crie um atributo ref=nomeDaVariavelDeReferencia, que declarada através de uma variável somente leitura (const), da seguinte forma:
+         */
+
+    // A linha abaixo declara a variável "varElemento", a qual receberá (=) o objeto "React", o qual invocará o método ".createRef()", sem parámetros (pois não há nada entre os parénteses).
+    const varCarrossel = React.createRef();
+
+    // A linha abaixo declara a variável somente leitura var_Elemento, a qual receberá (=) todo código necessário para criar um elemento/componente, iniciando o bloco de códigos com um "abre parenteses" (
+    const var_Carrossel = (
+            // A linha abaixo cria o elemento/tag em html "carrossel"
+            <div
+                // a linha abaixo cria o atributo "id", o qual receberá (=) o valor, entre chaves {}, em string
+                id={"varCarrossel"}
+                // a linha abaixo cria o atributo "key", o qual receberá (=) o valor, entre chaves {}, em string também, ou seja, entre aspas duplas "varCarrossel"
+                key={"varCarrossel"}
+                // a linha abaixo cria o atributo "ref", o qual receberá (=) o valor, entre chaves (varCarrossel), da variável varCarrossel declarada anteriormente
+                ref={varCarrossel}
+                // a linha abaixo cria o atributo "className", o qual receberá (=) o valor, entre chaves {}, em string também, ou seja, entre aspas duplas "carousel slide"
+                className={"carousel slide"}
+>
+                <div
+                    className={"carousel-indicators"}
+                    >
+                    <button
+                        type={"button"}
+                        data-bs-target={"#varCarrossel"}
+                        data-bs-slide-to={"0"}
+                        className={"active"}
+                        aria-current={"true"}
+                        aria-label={"Slide 1"}
+                    ></button>
+                    <button
+                        type={"button"}
+                        data-bs-target={"#varCarrossel"}
+                        data-bs-slide-to={"1"}
+                        aria-label={"Slide 2"}
+                    ></button>
+                    <button
+                        type={"button"}
+                        data-bs-target={"#varCarrossel"}
+                        data-bs-slide-to={"2"}
+                        aria-label={"Slide 3"}
+                    ></button>
+                </div>
+                <div
+                    className={"carousel-inner"}
+                >
+                    <div
+                        className={"carousel-item active"}
+                    >
+                    <img
+                        src={"./1.png"}
+                        className={"d-block w=100"}
+                        alt={"1.png"}
+                    />
+                    <div
+                        className={"carousel-caption d-none d-md-block"}
+                    >
+                        <h5>First slide label</h5>
+                        <p>Some representative placeholder content for the first slide.</p>
+                    </div>
+                </div>
+                <div
+                    className={"carousel-item"}
+                >
+                    <img
+                        src={"./2.png"}
+                        className={"d-block w-100"}
+                        alt={"2.png"}
+                    />
+                    <div
+                        className={"carousel-caption d-none d-md-block"}
+                    >                
+                        <h5>Second slide label</h5>
+                        <p>Some representative placeholder content for the third slide.</p>
+                    </div>
+                </div>
+                <div
+                    className={"carrousel-item"}
+                >
+                    <img
+                        src={"./3.png"}
+                        className={"d-block w-100"}
+                        alt={"3.png"}
+                    />
+                    <div
+                        className={"carousel-caption d-none d-md-block"}
+                    >
+                        <h5>Third slide label</h5>
+                        <p>Some representative placeholder content for the third slide.</p>
+                    </div>
+                </div>
+            </div>
+            <button
+                className={"carousel-control-prev"}
+                type={"button"}
+                data-bs-target={"#varCarrossel"}
+                data-bs-slide={"prev"}
+            >
+                <span
+                    className={"carousel-control-prev-icon"}
+                    aria-hidden={"true"}
+                ></span>
+                <span
+                    className={"visually-hidden"}
+                >Previous</span>
+                </button>
+                <button
+                    className={"carousel-control-next"}
+                    type={"button"}
+                    data-bs-target={"#varCarrossel"}
+                    data-bs-slide={"next"}
+                >
+                    <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span className="visually-hidden">Next</span>
+                </button>
+            </div>
+        );
+            
+            // A linha abaixo declara a variável ObjetoElemento, a qual receberá (=) como "valor" uma "air function" () = => { /** bloco de códigos */}, a qual retornará (return) a variável "var_Elemento" declarada anteriormente, e inicia o bloco de códigos com "abre chaves" {
+            const ObjetoCarrossel = () => {
+            // retorna (return) a variável "var_Elemento" declarada anteriormente
+            return var_Carrossel;
+        // A linha abaixo encerra o bloco de códigos do ObjetoElemento com a chave invertida }
+        }
+
+        // A linha abaixo declara a variável "container", a qual receberá (=) o valor em forma do objeto "document", o qual invocará o método ".getElementById", cujo parâmetro enviado é o nome do elemento em string (aspas simples) dentro dos perenteses ('mydiv');
+        const container = document.getElementById('mydiv');
+
+        // A linha abaixo declara a variável somente leitura (const) "root", a qual receberá (=) o valor em forma do objeto "ReactDOM", o qual invocará o método ".createRoot", cujo parâmetro enviado, entre parenteses, é a variável (container) declarada anteriormente
+        const root = ReactDOM.createRoot(container);
+
+        // A linha abaixo, através do objeto/variável "root" declarado anteriomente, invoca o método ".render", o qual receberá o parametro <ObjetoElemento />, declarado anteriormente, entre tags </>
+        root.render(<ObjetoCarrossel />); // renderizar via variável (contém o objeto a ser renderizado)
+    // A linha abaixo encerra o bloco de códigos da tag <script type="text/babel">
+    </script>
+
+<!-- A linha abaixo encerra o bloco de códigos da tag <body> -->
+</body>
+
+<!-- A linha abaixo encerra o bloco de códigos da tag <html> -->
+</html>
